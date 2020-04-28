@@ -1,11 +1,13 @@
 import React from 'react';
 import './App.css';
+import { Navbar, ProjectBoard } from './Components';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 function App() {
   return (
     <div className="App">
-      <h1 className="jumbotron">Welcome to the Project Board</h1>
+      <Navbar/>
+      <ProjectBoard/>
     </div>
   );
 }
