@@ -5,13 +5,12 @@ class ProjectBoard extends Component {
     render() {
         return (
             <div className="container">
-                <a href="/ProjectTaskForm.html" className="btn btn-primary mb-3">
-                    <i> Create Project Task</i>
-                </a>
+                <a href="" className="btn btn-primary mb-3"><i className="fas fa-plus-circle"></i> Create Project Task</a>
                 <br />
                 <hr />
 
                 <div className="container">
+
                     <div className="row">
                         <div className="col-md-4">
                             <div className="card text-center mb-2">
@@ -19,7 +18,6 @@ class ProjectBoard extends Component {
                                     <h3>TO DO</h3>
                                 </div>
                             </div>
-                            
                             <ProjectItem/>
                         </div>
                         
@@ -42,6 +40,7 @@ class ProjectBoard extends Component {
                     </div>
                 </div>
             </div>
+            
         )
     }
 }
