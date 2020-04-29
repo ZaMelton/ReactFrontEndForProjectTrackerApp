@@ -1,13 +1,14 @@
 import React from 'react'
+import { Link } from 'react-router-dom';
 
 function Navbar() {
     return (
         <div>
             <nav className="navbar navbar-expand-sm navbar-dark bg-primary mb-4">
                 <div className="container">
-                    <a className="navbar-brand" href="Dashboard.html">
-                    Project Tracker
-                    </a>
+                    <Link className="navbar-brand" to='/'>
+                        Project Tracker
+                    </Link>
                     <button
                         className="navbar-toggler"
                         type="button"

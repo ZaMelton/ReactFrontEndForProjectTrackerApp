@@ -1,15 +1,16 @@
 import React from 'react';
 import './App.css';
-import { Navbar, ProjectBoard } from './Components';
+import { Navbar, ProjectBoard, AddProjectTaskForm } from './Components';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { BrowserRouter as Router, route } from 'react-router-dom';
+import { BrowserRouter as Router, Route } from 'react-router-dom';
 
 function App() {
   return (
     <Router>
       <div className="App">
         <Navbar/>
-        <ProjectBoard/>
+        <Route exact path="/" component={ProjectBoard} />
+        <Route exact path="/addProjectTaskForm" component={AddProjectTaskForm} />
       </div>
     </Router>
   );
