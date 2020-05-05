@@ -10,6 +10,7 @@ class AddProjectTaskForm extends Component {
             acceptanceCriteria: '',
             status: ''
         };
+        
         this.onChange = this.handleChange.bind(this);
         this.onSubmit = this.handleSubmit.bind(this);
     }
@@ -19,13 +20,13 @@ class AddProjectTaskForm extends Component {
             [event.target.name]: event.target.value
         });
     }
-
+    
     handleSubmit = (event) => {
         event.preventDefault();
         const newProjectTask = {
             summary: this.state.summary,
             acceptanceCriteria: this.state.acceptanceCriteria,
-            status: this.state.status
+            status: this.state.status,
         };
         console.log(newProjectTask);
     }
@@ -41,7 +42,6 @@ class AddProjectTaskForm extends Component {
                             <hr/>
 
                             <form onSubmit={this.handleSubmit}>
-
                                 <div className="form-group">
                                     <input 
                                         className="form-control form-control-lg" 
@@ -86,7 +86,6 @@ class AddProjectTaskForm extends Component {
                                         <div className='col-sm-1'></div>
                                     </div>
                                 </div>
-                                
                             </form>
 
                         </div>
