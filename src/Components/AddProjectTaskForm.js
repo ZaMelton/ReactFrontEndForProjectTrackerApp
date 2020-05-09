@@ -12,11 +12,18 @@ class AddProjectTaskForm extends Component {
         this.state = {
             summary: '',
             acceptanceCriteria: '',
-            status: ''
+            status: '',
+            errors: {},
         };
         
         this.onChange = this.handleChange.bind(this);
         this.onSubmit = this.handleSubmit.bind(this);
+    }
+
+    componentWillReceiveProps(nextProps) {
+        if(nextProps.errors){
+            this.setState({ errors: nextProps.errors });
+        }
     }
 
     handleChange = (event) => {
@@ -37,6 +44,7 @@ class AddProjectTaskForm extends Component {
     }
 
     render() {
+        const { errors } = this.state;
         return (
             <div className="addProjectTask">
                 <div className="container">
@@ -49,13 +57,20 @@ class AddProjectTaskForm extends Component {
                             <form onSubmit={this.handleSubmit}>
                                 <div className="form-group">
                                     <input 
-                                        className="form-control form-control-lg" 
+                                        className={classnames("form-control form-control-lg", {
+                                            "is-invalid": errors.summary
+                                        })} 
                                         type="text"
                                         name="summary" 
                                         value={this.state.summary}
                                         placeholder="Project Task summary" 
                                         onChange={this.handleChange}
                                     />
+                                    {
+                                        errors.summary && (
+                                            <div className="invalid-feedback">{errors.summary}</div>
+                                        )
+                                    }
                                 </div>
 
                                 <div className="form-group">
@@ -110,4 +125,4 @@ const mapStateToProps = state => ({
     errors: state.errors
 });
 
-export default connect(null, {addProjectTask}) (AddProjectTaskForm);
+export default connect(mapStateToProps, {addProjectTask}) (AddProjectTaskForm);
