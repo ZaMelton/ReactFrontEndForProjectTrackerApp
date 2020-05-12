@@ -20,11 +20,11 @@ class AddProjectTaskForm extends Component {
         this.onSubmit = this.handleSubmit.bind(this);
     }
 
-    static getDerivedStateFromProps(props, state) {
+    static getDerivedStateFromProps(props) {
         if(props.errors){
             return{
                 errors: props.errors,
-            }
+            };  
         }
     }
 
