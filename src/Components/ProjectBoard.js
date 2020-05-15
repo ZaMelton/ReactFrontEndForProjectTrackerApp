@@ -9,54 +9,52 @@ class ProjectBoard extends Component {
 
     componentDidMount() {
         this.props.getAllTasks();
+      }
 
+    render() {
         const {project_tasks} = this.props.project_tasks;
-        this.DetermineTaskData(project_tasks);
-    }
 
-    DetermineTaskData = (projectTasks) => {
-
-        let boardContent;
         let toDoItems = [];
         let inProgressItems = [];
         let doneItems = [];
 
-        if(projectTasks.length < 1) {
+        const DetermineTaskData = project_tasks => {
+            if(project_tasks.length < 1) {
+                return (
+                    <div className="alert alert-info text-center" role="alert">
+                        There are no tasks to display...
+                    </div>
+                )
+            } else {
+                const tasks = project_tasks.map(project_task => (
+                    <ProjectItem 
+                        key={project_task.id} 
+                        summary={project_task.summary} 
+                        acceptanceCriteria={project_task.acceptanceCriteria}
+                        status={project_task.status}
+                    />
+                ));
 
-                console.log("asdfasdfas");
-                console.log("asdfasdfas");
+                for (let i = 0; i < tasks.length; i++) {
+                    console.log(tasks[i]);
+                    console.log(i);
 
-        } else {
-            const tasks = projectTasks.map(projectTask => (
-                <ProjectItem 
-                    key={projectTask.id} 
-                    summary={projectTask.summary} 
-                    acceptanceCriteria={projectTask.acceptanceCriteria}
-                    status={projectTask.status}
-                />
-            ));
+                    if(tasks[i].props.status === "TO_DO"){
+                        toDoItems.push(tasks[i]);
+                    }
 
-            for (let i = 0; i < tasks.length; i++) {
-                console.log(tasks[i]);
-                console.log(tasks.length);
+                    if(tasks[i].props.status === "IN_PROGRESS"){
+                        inProgressItems.push(tasks[i]);
+                    }
 
-                if(tasks[i].props.status === "TO_DO"){
-                    toDoItems.push(tasks[i]);
-                }
-
-                if(tasks[i].props.status === "IN_PROGRESS"){
-                    inProgressItems.push(tasks[i]);
-                }
-
-                if(tasks[i].props.status === "DONE"){
-                    doneItems.push(tasks[i]);
+                    if(tasks[i].props.status === "DONE"){
+                        doneItems.push(tasks[i]);
+                    }
                 }
             }
-        }
-    }
+        };
 
-    render() {
-        
+        DetermineTaskData(project_tasks);
 
         return (
             <div className="container">
@@ -75,6 +73,7 @@ class ProjectBoard extends Component {
                                     <h3>TO DO</h3>
                                 </div>
                             </div>
+                            {toDoItems}
                         </div>
                         
                         <div className="col-md-4">
@@ -83,6 +82,7 @@ class ProjectBoard extends Component {
                                     <h3>In Progress</h3>
                                 </div>
                             </div>
+                            {inProgressItems}
                         </div>
 
                         <div className="col-md-4">
@@ -91,12 +91,12 @@ class ProjectBoard extends Component {
                                     <h3>Done</h3>
                                 </div>
                             </div>
+                            {doneItems}
                         </div>
 
                     </div>
                 </div>
             </div>
-            
         )
     }
 }
