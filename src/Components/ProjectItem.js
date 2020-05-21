@@ -10,7 +10,6 @@ class ProjectItem extends Component {
                     {this.props.summary}
                 </div>
                 <div className="card-body bg-light">
-                    <h5 className="card-title">summary</h5>
                     <p className="card-text text-truncate ">
                         {this.props.acceptanceCriteria}
                     </p>
