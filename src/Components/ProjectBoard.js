@@ -32,12 +32,11 @@ class ProjectBoard extends Component {
                         summary={project_task.summary} 
                         acceptanceCriteria={project_task.acceptanceCriteria}
                         status={project_task.status}
+                        id={project_task.id}
                     />
                 ));
 
                 for (let i = 0; i < tasks.length; i++) {
-                    console.log(tasks[i]);
-                    console.log(i);
 
                     if(tasks[i].props.status === "TO_DO"){
                         toDoItems.push(tasks[i]);
@@ -100,6 +99,7 @@ class ProjectBoard extends Component {
                 </Link>
                 <br />
                 <hr />
+                
                 {boardContent}
             </div>
         )
