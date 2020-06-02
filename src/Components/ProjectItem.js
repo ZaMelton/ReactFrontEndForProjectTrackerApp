@@ -21,7 +21,7 @@ class ProjectItem extends Component {
                     <p className="card-text text-truncate ">
                         {this.props.acceptanceCriteria}
                     </p>
-                    <Link to='/AddProjectTaskForm' className="btn btn-primary">
+                    <Link to={`UpdateProjectTaskForm/${this.props.id}`} className="btn btn-primary">
                         View / Update
                     </Link>
 

@@ -1,11 +1,13 @@
-import { GET_PROJECT_TASKS, DELETE_PROJECT_TASK } from '../Actions/Types';
+import { GET_PROJECT_TASKS, DELETE_PROJECT_TASK, GET_PROJECT_TASK } from '../Actions/Types';
 
 const initialState = {
     project_tasks: [],
+    project_task: {},
 };
     
 export default function(state = initialState, action) {
     switch(action.type){
+        
         case GET_PROJECT_TASKS:
             return {
                 ...state,
@@ -16,6 +18,12 @@ export default function(state = initialState, action) {
             return {
                 ...state,
                 project_tasks: state.project_tasks.filter(projectTask => projectTask.id !== action.payload.id)
+            };
+
+        case GET_PROJECT_TASK:
+            return {
+                ...state,
+                project_task: action.payload,
             };
 
         default:
